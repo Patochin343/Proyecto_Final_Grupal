@@ -1,0 +1,307 @@
+/* === 🎨 ESTILOS GENERALES === */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+  }
+  
+  body {
+    background-color: #f4f6f5;
+    color: #222;
+    line-height: 1.6;
+  }
+  
+  /* === 🧭 CONTENEDOR === */
+  .container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  
+  /* === ⚽ ENCABEZADO === */
+  .main-header {
+    background: linear-gradient(135deg, #006633, #00994d);
+    color: #fff;
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    transition: background 0.3s ease, box-shadow 0.3s;
+  }
+  
+  .main-header.scrolled {
+    background: #005a2c;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  }
+  
+  .nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .logo {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  .main-nav ul {
+    display: flex;
+    list-style: none;
+    gap: 1.5rem;
+  }
+  
+  .main-nav a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+  }
+  
+  .main-nav a:hover,
+  .main-nav a.active {
+    color: #ffeb3b;
+  }
+  
+  .btn-nav {
+    background: #ffeb3b;
+    color: #222;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-weight: 600;
+    transition: transform 0.3s, background 0.3s;
+  }
+  
+  .btn-nav:hover {
+    transform: scale(1.05);
+    background: #ffd600;
+  }
+  
+  /* === 🏟️ HERO === */
+  .hero {
+    background: url("https://images.unsplash.com/photo-1599058917212-d750089bc07d?auto=format&fit=crop&w=1600&q=80")
+      center/cover no-repeat;
+    color: white;
+    text-align: center;
+    padding: 8rem 1rem;
+    position: relative;
+  }
+  
+  .hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+  }
+  
+  .hero-content {
+    position: relative;
+    z-index: 2;
+  }
+  
+  .hero h1 {
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
+    text-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
+  }
+  
+  .hero p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .btn-primary {
+    background: #ffeb3b;
+    color: #222;
+    padding: 0.9rem 1.7rem;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+  
+  .btn-primary:hover {
+    background: #fff176;
+    transform: translateY(-3px);
+  }
+  
+  /* === ⚙️ FUNCIONES === */
+  .features {
+    padding: 4rem 0;
+    text-align: center;
+  }
+  
+  .features h2 {
+    color: #006633;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .grid-3 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .feature-item {
+    background: white;
+    padding: 2rem 1rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+  }
+  
+  .feature-item:hover {
+    transform: translateY(-5px);
+  }
+  
+  .feature-item h3 {
+    color: #006633;
+    margin-bottom: 0.7rem;
+  }
+  
+  /* === 🏐 CANCHAS === */
+  .page-content {
+    padding: 3rem 0;
+  }
+  
+  .canchas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+  
+  .cancha-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+  }
+  
+  .cancha-card:hover {
+    transform: translateY(-6px);
+  }
+  
+  .cancha-card a {
+    display: inline-block;
+    margin-top: 1rem;
+    background: #006633;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background 0.3s;
+  }
+  
+  .cancha-card a:hover {
+    background: #00994d;
+  }
+  
+  /* === 💬 CONTACTO === */
+  .contact-info,
+  .contact-form {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+  }
+  
+  .contact-form button {
+    background: #006633;
+    color: white;
+    padding: 0.6rem 1rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.3s;
+  }
+  
+  .contact-form button:hover {
+    background: #00994d;
+  }
+  
+  /* === 🔐 LOGIN / FORMULARIOS === */
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+  
+  form input,
+  form textarea,
+  form select {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 0.6rem;
+    font-size: 1rem;
+  }
+  
+  button {
+    background: #006633;
+    color: white;
+    border: none;
+    padding: 0.8rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  button:hover {
+    background: #00994d;
+  }
+  
+  /* === 📅 RESERVA === */
+  .reserva-form-container {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  fieldset {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 1rem;
+  }
+  
+  legend {
+    font-weight: 600;
+    color: #006633;
+    padding: 0 0.5rem;
+  }
+  
+  /* === 🦶 FOOTER === */
+  footer {
+    background: #222;
+    color: #aaa;
+    text-align: center;
+    padding: 1.5rem 0;
+    margin-top: 3rem;
+  }
+  
+  /* === 📱 RESPONSIVE === */
+  @media (max-width: 768px) {
+    .main-nav ul {
+      flex-direction: column;
+      position: absolute;
+      background: #006633;
+      top: 70px;
+      right: 0;
+      width: 200px;
+      padding: 1rem;
+      border-radius: 0 0 0 10px;
+      display: none;
+    }
+  
+    .main-nav ul.show {
+      display: flex;
+    }
+  }  
