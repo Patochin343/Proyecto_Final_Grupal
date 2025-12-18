@@ -1,4 +1,4 @@
-/* === 🎨 VARIABLES Y RESET === */
+/*  VARIABLES Y RESET*/
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
 :root {
@@ -30,7 +30,7 @@ body {
   min-height: 100vh; /* Asegura que el footer baje */
 }
 
-/* === 🧭 LAYOUT PRINCIPAL === */
+/* ===  LAYOUT PRINCIPAL === */
 .container {
   width: 90%;
   max-width: 1100px;
@@ -41,7 +41,7 @@ main {
   flex: 1; /* Empuja el footer hacia abajo */
 }
 
-/* === ⚽ ENCABEZADO === */
+/* ===  ENCABEZADO === */
 .main-header {
   background: linear-gradient(135deg, var(--primary-color), #00994d);
   color: var(--white);
@@ -102,7 +102,7 @@ main {
   transform: translateY(-2px);
 }
 
-/* === 🏟️ HERO SECTION === */
+/* ===  HERO SECTION === */
 .hero {
   background: url("https://images.unsplash.com/photo-1529900748604-07564a03e7a6?auto=format&fit=crop&w=1600&q=80") center/cover no-repeat;
   color: var(--white);
@@ -171,7 +171,7 @@ main {
   text-align: center;
 }
 
-/* === ⚙️ SECCIONES GENERALES === */
+/* ===  SECCIONES GENERALES === */
 .page-title {
   text-align: center;
   color: var(--primary-color);
@@ -217,7 +217,7 @@ main {
     margin-bottom: 1rem;
 }
 
-/* === 🏐 TARJETAS DE CANCHAS === */
+/* === TARJETAS DE CANCHAS === */
 .canchas-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -289,7 +289,7 @@ main {
   margin-bottom: 1.5rem;
 }
 
-/* === 📅 RESERVA LAYOUT (2 Columnas) === */
+/* === RESERVA LAYOUT (2 Columnas) === */
 .reserva-layout {
   display: grid;
   grid-template-columns: 2fr 1fr; /* Izquierda ancho, derecha angosto */
@@ -320,7 +320,7 @@ main {
   margin-bottom: 1rem;
 }
 
-/* === 📝 FORMULARIOS === */
+/* ===  FORMULARIOS === */
 .form-group {
   margin-bottom: 1.2rem;
 }
@@ -366,7 +366,7 @@ legend {
   font-weight: 700;
 }
 
-/* === 🔐 LOGIN / AUTH CENTERED === */
+/* === LOGIN / AUTH CENTERED === */
 .flex-center {
   display: flex;
   align-items: center;
@@ -399,7 +399,7 @@ legend {
   font-weight: 600;
 }
 
-/* === 🦶 FOOTER === */
+/* === FOOTER === */
 .main-footer {
   background: #1a1a1a;
   color: #888;
@@ -408,7 +408,7 @@ legend {
   margin-top: auto;
 }
 
-/* === 📱 RESPONSIVE MEDIA QUERIES === */
+/* === RESPONSIVE MEDIA QUERIES === */
 @media (max-width: 768px) {
   /* Navegación Móvil */
   .nav-container {
