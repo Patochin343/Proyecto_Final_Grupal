@@ -41,7 +41,7 @@ main {
   flex: 1; /* Empuja el footer hacia abajo */
 }
 
-/* === ⚽ ENCABEZADO === */
+/* ===  ENCABEZADO === */
 .main-header {
   background: linear-gradient(135deg, var(--primary-color), #00994d);
   color: var(--white);
@@ -102,7 +102,7 @@ main {
   transform: translateY(-2px);
 }
 
-/* === 🏟️ HERO SECTION === */
+/* ===  HERO SECTION === */
 .hero {
   background: url("https://images.unsplash.com/photo-1529900748604-07564a03e7a6?auto=format&fit=crop&w=1600&q=80") center/cover no-repeat;
   color: var(--white);
@@ -217,7 +217,7 @@ main {
     margin-bottom: 1rem;
 }
 
-/* === 🏐 TARJETAS DE CANCHAS === */
+/* === TARJETAS DE CANCHAS === */
 .canchas-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
