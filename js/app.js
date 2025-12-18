@@ -1,86 +1,101 @@
-// Espera a que todo el contenido HTML esté cargado
 document.addEventListener('DOMContentLoaded', function() {
-
-    //LÓGICA PARA: reserva.html
     
-    // Busca el formulario de reserva
-    const formReserva = document.querySelector('.reserva-form-container form');
-    if (formReserva) {
+    /* =========================================================
+       1. GLOBAL: Menú Móvil y Header Scroll
+       ========================================================= */
+    
+    const header = document.querySelector(".main-header");
+    window.addEventListener("scroll", () => {
+        if (window.scrollY > 50) {
+            header.classList.add("scrolled");
+        } else {
+            header.classList.remove("scrolled");
+        }
+    });
+
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navList = document.querySelector('.main-nav ul');
+
+    if (menuToggle && navList) {
+        menuToggle.addEventListener('click', () => {
+            navList.classList.toggle('show');
+            menuToggle.textContent = navList.classList.contains('show') ? '✕' : '☰';
+        });
+    }
+
+    /* =========================================================
+       2. LÓGICA VISUAL DE RESERVA (reserva.html)
+       ========================================================= */
+    // Nota: Ya no interceptamos el 'submit' para que Python reciba los datos.
+    // Aquí solo hacemos cálculos visuales de precio.
+    
+    if (document.querySelector('.reserva-form-container')) { 
         
-        // 1. Autocompletar la cancha desde la URL
+        const PRECIOS = {
+            'f7-campin': { nombre: 'El Campín - Fútbol 7', precio: 50 },
+            'basket-norte': { nombre: 'Complejo Norte - Basket', precio: 40 },
+            'padel-center': { nombre: 'Padel Center', precio: 60 }
+        };
+
+        const selectCancha = document.getElementById('cancha-seleccionada');
+        const inputFecha = document.getElementById('fecha');
+        const summaryContent = document.getElementById('summary-content');
+
+        // A. Autocompletar desde URL
         const urlParams = new URLSearchParams(window.location.search);
-        const canchaSeleccionada = urlParams.get('cancha');
+        const canchaUrl = urlParams.get('cancha');
         
-        if (canchaSeleccionada) {
-            const selectCancha = document.getElementById('cancha-seleccionada');
-            if (selectCancha) {
-                selectCancha.value = canchaSeleccionada;
-            }
+        if (canchaUrl && selectCancha && PRECIOS[canchaUrl]) {
+            selectCancha.value = canchaUrl;
         }
 
-        // 2. Evitar que se puedan reservar fechas pasadas
-        const inputFecha = document.getElementById('fecha');
+        // B. Restricción de fecha (No pasado)
         if (inputFecha) {
-            // Obtiene la fecha de hoy en formato AAAA-MM-DD
             const hoy = new Date().toISOString().split('T')[0];
             inputFecha.setAttribute('min', hoy);
         }
 
-        // 3. Manejar el envío del formulario (simulación)
-        formReserva.addEventListener('submit', function(evento) {
-            evento.preventDefault(); // Evita que la página se recargue
+        // C. Calcular Precio en Tiempo Real
+        function actualizarResumen() {
+            // Si el elemento de resumen no existe en el HTML (porque no lo hemos puesto), no hacer nada
+            if(!summaryContent) return;
 
-            // Aquí puedes agregar validaciones más complejas
-            const nombre = document.getElementById('nombre').value;
-            const fecha = document.getElementById('fecha').value;
-            const hora = document.getElementById('hora').value;
+            const canchaVal = selectCancha.value;
+            const infoCancha = PRECIOS[canchaVal] || { nombre: 'Cancha', precio: 0 };
+            
+            summaryContent.innerHTML = `
+                <div style="border-bottom: 1px solid #ddd; padding-bottom: 10px; margin-bottom: 10px;">
+                    <p><strong>Cancha:</strong> ${infoCancha.nombre}</p>
+                    <p><strong>Fecha:</strong> ${inputFecha.value || 'Pendiente'}</p>
+                </div>
+                <div style="display: flex; justify-content: space-between; font-size: 1.2rem;">
+                    <span>Total a Pagar:</span>
+                    <strong style="color: #ffeb3b;">$${infoCancha.precio}.00</strong>
+                </div>
+            `;
+        }
 
-            if (nombre && fecha && hora) {
-                // Simulación de éxito
-                alert(`¡Reserva confirmada, ${nombre}!\nCancha: ${canchaSeleccionada}\nFecha: ${fecha} a las ${hora}`);
-                formReserva.reset(); // Limpia el formulario
-            } else {
-                alert('Por favor, completa todos los campos.');
-            }
-        });
+        if (selectCancha) selectCancha.addEventListener('change', actualizarResumen);
+        if (inputFecha) inputFecha.addEventListener('change', actualizarResumen);
+        
+        actualizarResumen();
     }
-
-    // Busca el formulario de contacto
-    const formContacto = document.querySelector('.contact-form form');
-    if (formContacto) {
-        formContacto.addEventListener('submit', function(evento) {
-            evento.preventDefault();
-            
-            const mensaje = document.getElementById('mensaje').value;
-            
-            if (mensaje.trim() === '') {
-                alert('Por favor, escribe un mensaje.');
-            } else {
-                // Simulación de éxito
-                alert('¡Mensaje enviado! Gracias por contactarnos.');
-                formContacto.reset();
-            }
-        });
-    }
-
-    //LÓGICA PARA: login.html
-
-    // Busca el formulario de login
-    const formLogin = document.querySelector('.login-container form');
-    if (formLogin) {
-        formLogin.addEventListener('submit', function(evento) {
-            evento.preventDefault();
-            
-            const usuario = document.getElementById('usuario').value;
-            
-            if (usuario) {
-                 // Simulación de éxito
-                alert(`¡Bienvenido de nuevo, ${usuario}!`);
-                formLogin.reset();
-            } else {
-                alert('Por favor, ingresa tu usuario.');
-            }
-        });
-    }
-
 });
+/* =========================================================
+       4. MENSAJES DEL SERVIDOR (Alertas automáticas)
+       ========================================================= */
+    const urlParams = new URLSearchParams(window.location.search);
+
+    if (urlParams.has('error')) {
+        const errorType = urlParams.get('error');
+        if (errorType === 'credenciales') alert('❌ Usuario o contraseña incorrectos.');
+        if (errorType === 'existe') alert('⚠️ Este correo ya está registrado.');
+    }
+
+    if (urlParams.has('registrado')) {
+        alert('✅ ¡Registro exitoso! Ahora puedes iniciar sesión.');
+    }
+
+    if (urlParams.has('reserva')) {
+        alert('⚽ ¡Reserva confirmada! Te esperamos en la cancha.');
+    }

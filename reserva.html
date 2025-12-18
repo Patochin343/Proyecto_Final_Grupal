@@ -6,7 +6,6 @@
     <title>CanchaMaster | Reservar</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
-<script src="js/app.js"></script>
 <body>
     <header class="main-header">
         <div class="container nav-container">
@@ -14,63 +13,72 @@
             <nav class="main-nav">
                 <ul>
                     <li><a href="index.html">Inicio</a></li>
-                    <li><a href="canchas.html" class="active">Canchas</a></li>
+                    <li><a href="canchas.html">Canchas</a></li>
                     <li><a href="contacto.html">Contacto</a></li>
-                    <li><a href="login.html" class="btn-nav">Iniciar Sesión</a></li>
+                    <li><a href="login.html" class="btn btn-nav">Iniciar Sesión</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
     <main class="container page-content">
-        <h1>Confirmar Reserva</h1>
+        <h1 class="page-title">Finalizar Reserva</h1>
         
-        <section class="reserva-form-container">
-            <form action="#" method="POST">
-                <fieldset>
-                    <legend>Tus Datos</legend>
-                    <div class="form-group">
-                        <label for="nombre">Nombre Completo:</label>
-                        <input type="text" id="nombre" name="nombre" required placeholder="Ej: Juan Pérez">
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Correo Electrónico:</label>
-                        <input type="email" id="email" name="email" required placeholder="juan@ejemplo.com">
-                    </div>
-                </fieldset>
+        <div class="reserva-layout">
+            <section class="reserva-form-container">
+                <form action="/api/reservar" method="POST" id="formReserva">
+                    <fieldset>
+                        <legend>1. Tus Datos</legend>
+                        <div class="form-group">
+                            <label for="nombre">Nombre Completo:</label>
+                            <input type="text" id="nombre" name="nombre" class="form-control" required placeholder="Ej: Juan Pérez">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Correo Electrónico:</label>
+                            <input type="email" id="email" name="email" class="form-control" required placeholder="juan@ejemplo.com">
+                        </div>
+                    </fieldset>
 
-                <br>
+                    <fieldset>
+                        <legend>2. Detalles del Partido</legend>
+                        <div class="form-group">
+                            <label for="cancha-seleccionada">Cancha:</label>
+                            <select id="cancha-seleccionada" name="cancha_id" class="form-control">
+                                <option value="f7-campin">El Campín - Fútbol 7</option>
+                                <option value="basket-norte">Complejo Norte - Basket</option>
+                                <option value="padel-center">Padel Center</option>
+                            </select>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="fecha">Fecha:</label>
+                                <input type="date" id="fecha" name="fecha" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="hora">Hora:</label>
+                                <input type="time" id="hora" name="hora" class="form-control" required min="09:00" max="23:00">
+                            </div>
+                        </div>
+                    </fieldset>
+                    
+                    <button type="submit" class="btn btn-primary btn-block">Confirmar y Pagar</button>
+                </form>
+            </section>
 
-                <fieldset>
-                    <legend>Detalles del Partido</legend>
-                    <div class="form-group">
-                        <label for="cancha-seleccionada">Cancha:</label>
-                        <select id="cancha-seleccionada" name="cancha">
-                            <option value="f7-campin">El Campín - Fútbol 7</option>
-                            <option value="basket-norte">Complejo Norte - Basket</option>
-                            <option value="padel-center">Padel Center</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="fecha">Fecha:</label>
-                        <input type="date" id="fecha" name="fecha" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="hora">Hora:</label>
-                        <input type="time" id="hora" name="hora" required min="09:00" max="23:00">
-                    </div>
-                </fieldset>
-                
-                <br>
-                <button type="submit">Realizar Reserva</button>
-            </form>
-        </section>
+            <aside class="reserva-summary">
+                <h3>Resumen</h3>
+                <div id="summary-content">
+                    <p>Selecciona una fecha para ver el total.</p>
+                </div>
+            </aside>
+        </div>
     </main>
 
-    <footer>
+    <footer class="main-footer">
         <div class="container">
             <p>&copy; 2025 CanchaMaster.</p>
         </div>
     </footer>
+    <script src="js/app.js" defer></script>
 </body>
 </html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Panel Empleado</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        table { width: 100%; border-collapse: collapse; margin-top: 1rem; background: white; }
+        th, td { padding: 12px; border: 1px solid #ddd; text-align: left; }
+        th { background-color: #004d26; color: white; }
+        .btn-confirm { background: #ffeb3b; color: #333; border: none; padding: 5px 10px; cursor: pointer; font-weight: bold; border-radius: 4px; }
+        .badge-ok { background: #d4edda; color: #155724; padding: 5px; border-radius: 4px; }
+        .badge-pending { background: #fff3cd; color: #856404; padding: 5px; border-radius: 4px; }
+    </style>
+</head>
+<body>
+    <header class="main-header">
+        <div class="container nav-container">
+            <a href="#" class="logo">Panel Empleado 👷</a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Salir</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container page-content">
+        <h1>Gestión de Reservas</h1>
+        <p>Confirma la asistencia y el pago de los clientes.</p>
+
+        <section style="background: white; padding: 20px; border-radius: 12px;">
+            <table id="tabla-reservas-empleado">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Cliente</th>
+                        <th>Cancha</th>
+                        <th>Fecha</th>
+                        <th>Estado</th>
+                        <th>Acción</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </section>
+    </main>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>
